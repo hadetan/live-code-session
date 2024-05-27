@@ -74,7 +74,7 @@ export const login = asyncHandler(async (req, res) => {
         throw new CustomError("PLease fill all details", 400)
     }
 
-    const user = User.findOne({email}).select("+password")
+    const user = await User.findOne({email}).select("+password")
 
     if (!user) {
         throw new CustomError("Invalid credentials", 400)
